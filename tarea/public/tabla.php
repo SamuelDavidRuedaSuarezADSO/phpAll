@@ -3,7 +3,7 @@ require __DIR__ . "/../clases/aprendiz.php";
 
 $aprendiz = new Aprendiz();
 
-$person = $aprendiz->listar();
+$person = $aprendiz->Listar();
 
 ?>
 <table class="tablaSec">
@@ -45,8 +45,8 @@ $person = $aprendiz->listar();
         </form>
       </td>
       <td class="tablaPart">
-        <form action="controladores/controladorModi.php" method="get" class="formT">
-          <input type="hidden" value="<?php ?>" name="modi" class="inputInvi">
+        <form action="controladores/ruter.php" method="POST" class="formT">
+          <input type="hidden" value="<?php echo $value["id"]?>" name="id" class="inputInvi">
           <button type="submit" class="tablaModi">Modficar</button>
         </form>
       </td>

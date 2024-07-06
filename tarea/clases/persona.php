@@ -65,9 +65,16 @@ class Persona
     $stm->bindParam(':genero', $this->genero);
     $stm->bindParam(':edad', $this->edad);
     $stm->execute();
+
+    if($stm->execute()){
+      return $this->connection->lastInsertId();
+    }
+    else{
+      return $this->connection->errorInfo();
+    }
   }
 
-  public function listar()
+  public function Listar()
   {
     $sql = "SELECT * FROM aprendiz";
     $stm = $this->connection->prepare($sql);
@@ -76,7 +83,7 @@ class Persona
     return $stm->fetchAll();
   }
 
-  public function eliminar()
+  public function Eliminar()
   {
     $sql = "DELETE FROM aprendiz where id = :id";
     $stm = $this->connection->prepare($sql);
@@ -84,7 +91,28 @@ class Persona
     $stm->execute();
   }
 
-  public function modificar(){
-    
+  public function Modificar($tabla){
+    $sql = "UPDATE $tabla SET nombre = :nombre, apellido = :apellido, genero = :genero, edad = :edad WHERE id = :id";
+    $stm = $this->connection->prepare($sql);
+    $stm->bindParam(':nombre', $this->nombre);
+    $stm->bindParam(':apellido', $this->apellido);
+    $stm->bindParam(':genero', $this->genero);
+    $stm->bindParam(':edad', $this->edad);
+    $stm->bindParam(':id', $this->id);
+    $stm->execute();
+    if($stm->execute()){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
+
+  public function GetPersonById($tabla, $id){
+    $sql = "SELECT * FROM $tabla WHERE id = $id";
+    $stm = $this->connection->prepare($sql);
+    $stm->execute();
+    return $stm->fetch();
+  }
+
 }

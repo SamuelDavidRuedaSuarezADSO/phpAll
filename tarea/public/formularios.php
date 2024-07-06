@@ -1,5 +1,5 @@
 <div class="formSec">
-  <form action="controladores/controlador.php" method="POST" class="form">
+  <form action="controladores/ruter.php" method="POST" class="form">
     <div class="formPart">
       <label for="nombre" class="label">Nombre:</label>
       <input type="text" id="nombre" name="nombre" class="input">
@@ -20,6 +20,6 @@
       <label for="edad" class="label">Edad:</label>
       <input type="number" id="edad" name="edad" class="input">
     </div>
-    <button type="submit" class="boton">Enviar</button>
+    <button type="submit" class="boton">Guardar</button>
   </form>
 </div>
