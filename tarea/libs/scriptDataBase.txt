@@ -1,0 +1,6 @@
+CREATE TABLE aprendiz(
+    id int PRIMARY KEY not null AUTO_INCREMENT,
+    nombre varchar(260) not null,
+    apellido varchar(260) not null,
+    genero varchar(260) not null,
+    edad int not null)
